@@ -1,0 +1,43 @@
+.profile-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .profile-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 100px;
+    margin-top: -500px;
+  }
+  
+  .profile-content {
+    text-align: center;
+  }
+  
+  .reset-password-btn {
+    background-color: #0b7874;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .reset-password-btn:hover {
+    background-color: #0a0eee;
+  }
+  .back-to-home-btn {
+    background-color: #55351a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .back-to-home-btn:hover {
+    background-color: #ae4916;
+  }

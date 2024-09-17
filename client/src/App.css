@@ -1,0 +1,324 @@
+
+/* SignUp.css */
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.sign-up-form {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+/* Filename - App.css */
+/* It containds the Form and Page Styling*/
+
+body {
+  background: #f3f3f3;
+  text-align: center;
+  
+}
+/* Filename - App.css */
+/* It containds the Form and Page Styling*/
+
+body {
+    background: #f3f3f3;
+    text-align: center;
+}
+.App {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 550px;
+    text-align: left;
+    margin-left: -100;
+}
+
+
+fieldset {
+    border: none;
+}
+
+
+label {
+    font-size: 15px;
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+fieldset {
+  border: none;
+}
+
+input {
+  display: block;
+  width: 100%;
+  /* margin-bottom: 15px; */
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+.form-wrapper {
+  flex-direction: column;
+}
+
+.sign-up-form {
+  width: 100%; /* adjust the width to your liking */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* add some margin bottom */
+}
+
+.selected-container {
+  width: 400px; /* adjust the width to your liking */
+  height: 1000px;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  position: absolute; /* add this to position the element absolutely */
+  right: 0; /* add this to position the element to the right */
+  top: 60%; /* add this to position the element vertically centered */
+  transform: translateY(-50%); /* add this to position the element vertically centered */
+  overflow-y: auto;
+  padding-right: 10px; 
+  background-color: #f9f9f9; /* added a light gray background color */
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* added a subtle box shadow */
+}
+.selected-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.selected-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.selected-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+.selected-container li button {
+  background-color: #3ab8eb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.selected-container li button:hover {
+  background-color: #8c8da8;
+}
+#selected-items {
+  list-style-type: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+#selected-items li {
+  list-style-type: none !important;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff; /* added a white background color for each list item */
+  border-radius: 5px; /* added a subtle border radius for each list item */
+  cursor: pointer; /* added a pointer cursor for better usability */
+}
+
+#selected-items li:last-child {
+  border-bottom: none;
+}.drywall-button {
+  background-color: #3ab8eb;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  width: 80px; /* adjust the width to your liking */
+  height: 30px; /* adjust the height to your liking */
+
+}
+
+.drywall-button:hover {
+  background-color: #8c8da8;
+}
+
+.cieling-button {
+  background-color: #3ab8eb;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  width: 80px; /* adjust the width to your liking */
+  height: 30px; /* adjust the height to your liking */
+
+}
+
+.cieling-button:hover {
+  background-color: #8c8da8;
+}
+.speciality-button {
+  background-color: #3ab8eb;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 5px 10px;
+  width: 80px; /* adjust the width to your liking */
+  height: 30px; /* adjust the height to your liking */
+
+}
+
+.speciality-button:hover {
+  background-color: #8c8da8;
+}
+.metal-button {
+  background-color: #3ab8eb;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  width: 80px; /* adjust the width to your liking */
+  height: 30px; /* adjust the height to your liking */
+
+}
+
+.metal-button:hover {
+  background-color: #8c8da8;
+}
+.insulation-button {
+  background-color: #3ab8eb;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  width: 82px; /* adjust the width to your liking */
+  height: 30px; /* adjust the height to your liking */
+
+}
+
+.insulation-button:hover {
+  background-color: #8c8da8;
+}
+.drywall-button, .cieling-button, .metal-button, .insulation-button, .speciality-button{
+  margin: 10px;
+  border-radius: 5px; /* add 10px margin to each button */
+}
+.custom-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  height: 5rem; /* Set the height of the container */
+  position: absolute;
+  right: 140px;
+  bottom: 40px;
+}
+
+.custom-button-container button {
+  background-color: #3ab8eb;
+  border: none;
+  border-radius: 0.3rem; /* Decrease the border radius */
+  color: white;
+  font-size: 1rem; /* Decrease the font size */
+  padding: 0.3rem 1.5rem; /* Decrease the padding */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+.custom-button-container button:hover {
+  background-color: #2a9ddd;
+}
+
+.custom-button-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.vendor-section {
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.product-cell {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.product-cell a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.product-cell a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.date-field {
+  display: none; /* Hides the date input */
+}
