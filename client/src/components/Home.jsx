@@ -12,6 +12,7 @@ import ExitIcon from "@rsuite/icons/Exit";
 import reactLogo from "./reactLogo.png";
 import { PDFDocument, rgb, StandardFonts, PDFName, PDFString } from "pdf-lib";
 import styled from "styled-components";
+import { API_URL } from "../config";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -11058,7 +11059,7 @@ const Home = () => {
 
   const handleLogout = () => {
     axios
-      .get("http://localhost:3000/auth/logout", { withCredentials: true })
+      .get(`${API_URL}/auth/logout`, { withCredentials: true })
       .then((res) => {
         if (res.data.status) {
           // Clear any user-related data if needed

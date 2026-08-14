@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import reactLogo from "./reactLogo.png";
+import { API_URL } from "../config";
 
 const ForgotPasswordContainer = styled.div`
   display: flex;
@@ -97,7 +98,7 @@ const ForgotPassword = () => {
     setError(""); // Clear any previous errors
     setMessage(""); // Clear any previous messages
 
-    Axios.post("http://localhost:3000/auth/forgot-password", { email })
+    Axios.post(`${API_URL}/auth/forgot-password`, { email })
       .then(response => {
         if (response.data.status) {
           setMessage("Check your email for reset password link");

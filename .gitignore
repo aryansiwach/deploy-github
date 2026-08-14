@@ -1,3 +1,19 @@
-node_modules
-node_modules
-node_modules
+# Dependencies
+node_modules/
+
+# Environment / secrets -- never commit these
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

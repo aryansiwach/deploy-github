@@ -9,15 +9,17 @@ import { UserRouter } from './routes/user.js'
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: [process.env.CLIENT_URL || "http://localhost:5173"],
     credentials: true
 }))
 app.use(cookieParser())
 app.use('/auth', UserRouter)
 
-mongoose.connect('mongodb://127.0.0.1:27017/authentication')
+const PORT = process.env.PORT || 3000
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/authentication'
 
+mongoose.connect(MONGO_URI)
 
-app.listen(process.env.PORT, () => {
-    console.log("Server is Running")
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
 })

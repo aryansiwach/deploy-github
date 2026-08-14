@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import reactLogo from "./reactLogo.png";
+import { API_URL } from "../config";
 
 const ResetPasswordContainer = styled.div`
   display: flex;
@@ -107,19 +108,19 @@ const GoBackButton = styled.button`
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { token } = useParams()
   const [error, setError] = useState(null);
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newPassword !== confirmNewPassword) {
+    if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
-    Axios.post("http://localhost:5173/reset-password", {
-      email,
-      newPassword,
+    Axios.post(`${API_URL}/auth/reset-password/${token}`, {
+      password,
     })
       .then(response => {
         if (response.data.status) {
@@ -149,6 +150,13 @@ const ResetPassword = () => {
           type="password"
           placeholder="New Password"
           onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <Input
+          type="password"
+          placeholder="Confirm New Password"
+          onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
 

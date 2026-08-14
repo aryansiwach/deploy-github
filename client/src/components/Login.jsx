@@ -3,6 +3,7 @@ import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 import reactLogo from "./reactLogo.png";
+import { API_URL } from "../config";
 
 const LoginContainer = styled.div`
   display: flex;
@@ -99,7 +100,7 @@ const Login = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3000/auth/login", {
+    Axios.post(`${API_URL}/auth/login`, {
       email,
       password,
     }).then(response => {

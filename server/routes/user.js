@@ -1,5 +1,5 @@
 import express from "express";
-import bcryt from "bcrypt";
+import bcrypt from "bcrypt";
 const router = express.Router();
 import { User } from "../models/User.js";
 import jwt from "jsonwebtoken";
@@ -12,7 +12,7 @@ router.post("/signup", async (req, res) => {
     return res.json({ message: "user already existed" });
   }
 
-  const hashpassword = await bcryt.hash(password, 10);
+  const hashpassword = await bcrypt.hash(password, 10);
   const newUser = new User({
     username,
     email,
@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
   });
 
   await newUser.save();
-  return res.json({ status: true, message: "record registed" });
+  return res.json({ status: true, message: "record registered" });
 });
 
 router.post("/login", async (req, res) => {
@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "user is not registered" });
   }
 
-  const validPassword = await bcryt.compare(password, user.password);
+  const validPassword = await bcrypt.compare(password, user.password);
   if (!validPassword) {
     return res.json({ message: "password is incorrect" });
   }
@@ -56,17 +56,18 @@ router.post("/forgot-password", async (req, res) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "aryansiwach1103@gmail.com",
-        pass: "REDACTED_APP_PASSWORD",
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
     const encodedToken = encodeURIComponent(token).replace(/\./g, "%2E");
+    const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
     var mailOptions = {
-      from: "your email@gmail.com",
+      from: process.env.EMAIL_USER,
       to: email,
       subject: "Reset Password",
       text: `hey there,
-      here is the link to reset your password :http://localhost:5173/resetPassword/${encodedToken}`,
+      here is the link to reset your password :${clientUrl}/resetPassword/${encodedToken}`,
     };
 
     
@@ -88,7 +89,7 @@ router.post("/reset-password/:token", async (req, res) => {
   try {
     const decoded = await jwt.verify(token, process.env.KEY);
     const id = decoded.id;
-    const hashPassword = await bcryt.hash(password, 10);
+    const hashPassword = await bcrypt.hash(password, 10);
     await User.findByIdAndUpdate({ _id: id }, { password: hashPassword });
     return res.json({ status: true, message: "updated password" });
   } catch (err) {
