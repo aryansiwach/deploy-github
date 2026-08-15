@@ -1,3 +1,19 @@
+// Main landing page: vendor submittal-PDF browser + project cover-sheet
+// builder. This is the core of the app and by far the largest file in the
+// repo (~12k lines) because the vendor/product catalog below is defined
+// inline as component state instead of coming from an API or JSON file.
+//
+// Layout of this file:
+//   1. Imports + top-level UI state (below)
+//   2. Vendor catalog data, one useState per material category:
+//      drywallVendors, specialityVendors, cielingVendors,
+//      insulationVendors, metalVendors -- each an array of
+//      { name, subVendors: [{ name, products: [{ name, file }] }] }
+//      where `file` is a path under client/uploads/. This is the
+//      "known limitation" noted in the README: moving this catalog to a
+//      JSON file or API endpoint would meaningfully shrink the JS bundle.
+//   3. UI state + handlers (sidebar, search, cover-sheet fields, PDF export)
+//   4. JSX render
 import axios from "axios";
 import "../App.css";
 import React, { useState } from "react";
@@ -28,6 +44,8 @@ const Home = () => {
   border-radius: 10px;
 `;
 
+  // --- Vendor catalog data (drywall / speciality / ceiling / insulation /
+  // metal) -- static data, not user-editable state. See file header. ---
   const [drywallVendors, setDrywallVendors] = useState([
     {
       name: "USG",
@@ -11015,6 +11033,7 @@ const Home = () => {
       ],
     },
   ]);
+  // --- End vendor catalog data. UI state + handlers below. ---
   const [showdrywall, setShowdrywall] = useState(false);
   const [showcieling, setShowcieling] = useState(false);
   const [showmetal, setShowmetal] = useState(false);
@@ -11370,6 +11389,7 @@ const Home = () => {
       Owner,
     });
   };
+  // --- Render ---
   return (
     <StyledDiv>
     <div>

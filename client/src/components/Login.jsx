@@ -1,3 +1,5 @@
+// Login form. Posts to /auth/login; on success the server sets an httpOnly
+// JWT cookie and this component navigates to Home ("/").
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";

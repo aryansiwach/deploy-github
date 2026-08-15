@@ -1,3 +1,5 @@
+// Sets a new password using the :token from the reset-password email link.
+// Posts to /auth/reset-password/:token; the token is short-lived (5 min).
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";

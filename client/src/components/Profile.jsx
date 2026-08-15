@@ -1,3 +1,5 @@
+// Account page. Currently a static shell with links to reset the password
+// and back to Home -- no profile data is fetched or displayed yet.
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';

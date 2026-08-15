@@ -1,3 +1,12 @@
+// Top-level route table for the app.
+//
+//   /                       Home            vendor catalog browser + cover sheet builder
+//   /signup, /login         Signup, Login   account creation / JWT session login
+//   /forgotPassword         ForgotPassword  request a password-reset email
+//   /resetPassword/:token   ResetPassword   set a new password from the emailed link
+//   /Profile                Profile         account page
+//   /ReferenceSheet         ReferenceSheet  opens the static reference spreadsheet
+//   /ExportPdf              ExportPdf       stub -- not yet implemented
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Signup from './components/Signup'
 import Login from './components/Login'

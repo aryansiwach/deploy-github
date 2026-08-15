@@ -1,3 +1,7 @@
+// Express API entry point.
+// Sets up the app, connects to MongoDB, and mounts the auth routes
+// (server/routes/user.js) under /auth. Config comes from environment
+// variables -- see server/.env.example for what's required.
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
@@ -8,6 +12,8 @@ import { UserRouter } from './routes/user.js'
 
 const app = express()
 app.use(express.json())
+// Only the configured client origin may call this API, and cookies
+// (the JWT auth cookie) are allowed to be sent cross-origin.
 app.use(cors({
     origin: [process.env.CLIENT_URL || "http://localhost:5173"],
     credentials: true

@@ -1,3 +1,5 @@
+// Account-creation form. Posts to /auth/signup, then redirects to /login
+// (it does not log the user in automatically).
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";

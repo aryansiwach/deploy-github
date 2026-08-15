@@ -1,3 +1,15 @@
+// Auth routes, mounted at /auth in server/index.js.
+//
+//   POST /auth/signup                 create an account
+//   POST /auth/login                  verify credentials, set the JWT auth cookie
+//   POST /auth/forgot-password        email a short-lived password-reset link
+//   POST /auth/reset-password/:token  consume that link, set a new password
+//   GET  /auth/verify                 check whether the request's cookie is a valid session
+//   GET  /auth/logout                 clear the auth cookie
+//
+// Sessions are a JWT stored in an httpOnly cookie (see login below) rather
+// than a server-side session store, so `verifyUser` just checks the token
+// signature/expiry on each protected request.
 import express from "express";
 import bcrypt from "bcrypt";
 const router = express.Router();
@@ -5,6 +17,7 @@ import { User } from "../models/User.js";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 
+// Create a new account. Password is hashed with bcrypt before storage.
 router.post("/signup", async (req, res) => {
   const { username, email, password } = req.body;
   const user = await User.findOne({ email });
@@ -23,6 +36,7 @@ router.post("/signup", async (req, res) => {
   return res.json({ status: true, message: "record registered" });
 });
 
+// Verify credentials and, on success, issue a 1-hour JWT in an httpOnly cookie.
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -42,6 +56,8 @@ router.post("/login", async (req, res) => {
   return res.json({ status: true, message: "login successfully" });
 });
 
+// Email a password-reset link containing a 5-minute JWT (via Gmail/Nodemailer).
+// The link points at CLIENT_URL/resetPassword/:token.
 router.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
   try {
@@ -83,6 +99,7 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
+// Verify the reset token from the emailed link and set a new (hashed) password.
 router.post("/reset-password/:token", async (req, res) => {
   const { token } = req.params;
   const { password } = req.body;
@@ -97,6 +114,7 @@ router.post("/reset-password/:token", async (req, res) => {
   }
 });
 
+// Middleware: rejects the request unless it carries a valid session cookie.
 const verifyUser = async (req, res, next) => {
     try {
       const token = req.cookies.token;
@@ -113,10 +131,12 @@ const verifyUser = async (req, res, next) => {
   
 
 
+// Lets the client check on load whether the stored cookie is still a valid session.
 router.get("/verify",verifyUser, (req, res) => {
     return res.json({status: true, message: "authorized"})
 });
 
+// Clears the auth cookie.
 router.get('/logout', (req, res) => {
     res.clearCookie('token')
     return res.json({status: true})

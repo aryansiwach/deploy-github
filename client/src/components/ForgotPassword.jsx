@@ -1,3 +1,5 @@
+// Requests a password-reset email via /auth/forgot-password. The email
+// contains a link to /resetPassword/:token (ResetPassword.jsx).
 import React, { useState } from "react";
 import Axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
